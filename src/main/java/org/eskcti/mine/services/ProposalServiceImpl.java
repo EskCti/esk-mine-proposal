@@ -1,5 +1,6 @@
 package org.eskcti.mine.services;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import org.eskcti.mine.dto.ProposalDTO;
@@ -10,6 +11,7 @@ import org.eskcti.mine.repositories.ProposalRepository;
 
 import java.util.Date;
 
+@ApplicationScoped
 public class ProposalServiceImpl implements ProposalService{
     @Inject
     ProposalRepository proposalRepository;
@@ -45,7 +47,6 @@ public class ProposalServiceImpl implements ProposalService{
         proposalRepository.deleteById(id);
     }
 
-    @Transactional
     private ProposalDTO buildAndSaveNewProposal(ProposalDetailDTO proposalDetailDTO) {
         try {
             ProposalEntity proposal = new ProposalEntity();
